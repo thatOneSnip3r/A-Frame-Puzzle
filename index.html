@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
+    <title> Pirate Dan's Treausre Hunt </title>
+</head>
+
+<!-- Treasure Chest: https://www.artstation.com/artwork/JXned -->
+<!-- Everything Else: https://www.textures.com -->
+<!-- Box: https://co.pinterest.com/pin/555139091572884400/ -->
+
+<body>
+    <a-scene>
+        <a-assets>
+            <img id="grass" src="assets/grass.png">
+            <img id="sky" src="assets/sky.jpg">
+            <img id="dirt" src="assets/dirt.png">
+            <img id="stars" src="assets/stars.jpg">
+            <a-asset-item id="sky_ship" src="assets/sky_ship/model.gltf"></a-asset-item>
+            <a-asset-item id="chest" src="assets/chest/model.gltf"></a-asset-item>
+        </a-assets>
+
+        <a-entity>
+            <a-camera position="2 0 20">
+                <a-entity cursor="fuse:true; fuseTimeout:2000;" 
+					material="color: #cccccc; shader: flat;" 
+					geometry="primitive: sphere; radius: 0.005;" 
+					position="0 0 -1"
+                    raycaster="objects: .clickable"
+					animation__ewnter="property: scale; to: 3 3 3; dur:2000; easing:linear; 
+					startEvents: mouseenter"
+					animation__leave="property: scale; to: 1 1 1; dur:2000; easing:linear; 
+					startEvents: mouseleave"></a-entity>
+            </a-camera>
+        </a-entity>
+
+        <a-sky src="#stars"></a-sky>
+        
+        <a-entity gltf-model="#sky_ship" position="-168 -430 100" scale="300 300 300" rotation="0 270 0"></a-entity>
+
+        <a-text value="hi! weLcOme tO my Kind of Baffling puzzlE! 
+        can you solve it? it's Honestly quIte simple,
+        I wouldN't be surprised, 
+        but you'll be sent to Davy jones' locker if ya cheat :)
+        good luck! YOU'll need it. 
+        the first puzzle in is this text..." 
+       align="center" position="2 0.5 17" side="double"></a-text>
+        
+        <a-text class="clickable" value=" You found me!
+         if a treasure you seek for is around here or thee, 
+        go to the ship's front, but it may be hard to see..." 
+        event-set__enter="_event: mouseenter;"
+		event-set__leave="_event: mouseleave; opacity: 0.1;"
+		event-set__targetOpacity="_event: click; opacity: 1;"
+        align="center" position="2 0.5 22" side="double" rotation="0 180 0" opacity="0.1"></a-text>
+        
+        <a-text class="clickable"  value="your next clue'll be found if you go to the abaft, 
+        but don't look too high, the wind's in a draft :)"
+        event-set__enter="_event: mouseenter;"
+		event-set__leave="_event: mouseleave; opacity: 0.1;"
+		event-set__targetOpacityyyy="_event: click; opacity: 1;"
+        align="center" position="2.9 0 -44" opacity="0.1"></a-text>
+
+        <a-text value="look at the black box behind you I promise its relevant, 
+        if the clue is what you want you might need to inspect the element..." 
+        align="center" position="0 10 45" rotation="90 0 0"></a-text>
+        
+        <a-text value="what did you find?" 
+        align="center" position="3 -5 50" opacity="0.5" side="double" rotation="0 180 0"></a-text>
+        <!-- For the final clue I hope you didn't cheat,
+            go to the top right and look beneath your feet! -->
+
+        <a-text value="Congrats, you found the treasure! 
+        Now go be rich!" 
+        align="center" position="18 -40 -50" side="double" width="24" rotation="270 0 0"></a-text>
+        
+        <a-entity gltf-model="#chest" position="20 -20 -38" scale="10 10 10" rotation="0 -90 0"></a-entity>
+        
+        
+    </a-scene>
+</body>
+</html>
+
+<!-- og camera pos.: 2 0 20-->
